@@ -90,7 +90,7 @@ export default function InputArea() {
           </Button>
         </Stack>
         <Stack direction="row" marginTop="10px" sx={{ height: "40px" }}>
-          <Box sx={{ minWidth: 80 }}>
+          <Box sx={{ minWidth: 110 }}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">Req..</InputLabel>
               <Select

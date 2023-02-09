@@ -26,7 +26,9 @@ export default function Main() {
       >
         <Grid container spacing={1} sx={{ height: "100%", width: "100%" }}>
           <Grid item xs={12} sm={6} md={7} sx={{ height: "100vh" }}>
-            <Item sx={{ height: "45vh", marginBottom: "5px" }}>
+            <Item
+              sx={{ height: "45vh", marginBottom: "5px", overflowY: "auto" }}
+            >
               <InputArea />
             </Item>
 
