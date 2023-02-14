@@ -1,12 +1,15 @@
 import Navbar from "./component/Navbar/Navbar";
+import ColorContextProvider from "./context/colorModeContext";
 import Main from "./main/Main";
 
 function App() {
   return (
-    <div className="App">
+    // <ColorContextProvider>
+    <div className="App" style={{ background: "" }}>
       <Navbar />
       <Main />
     </div>
+    // </ColorContextProvider>
   );
 }
 

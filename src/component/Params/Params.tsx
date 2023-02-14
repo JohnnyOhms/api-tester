@@ -1,4 +1,3 @@
-import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,8 +6,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { TextField } from "@mui/material";
+import { ListItem, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import { green, red } from "@mui/material/colors";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { paramsTableData } from "../../utils/data";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -32,25 +34,47 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function Params() {
   return (
-    <TableContainer component={Paper} sx={{ mt: 1 }}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Key</StyledTableCell>
-            <StyledTableCell>Value</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <StyledTableRow>
-            <StyledTableCell>
-              <TextField id="outlined-basic" variant="outlined" fullWidth />
-            </StyledTableCell>
-            <StyledTableCell>
-              <TextField id="outlined-basic" variant="outlined" fullWidth />
-            </StyledTableCell>
-          </StyledTableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <>
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "end",
+          paddingRight: "10px",
+        }}
+      >
+        <AddIcon
+          sx={{
+            border: `1px solid ${green[300]}`,
+            background: green[300],
+            color: "white",
+            mx: 1,
+          }}
+        />
+        <DeleteIcon
+          sx={{
+            border: `1px solid ${red[300]}`,
+            background: red[300],
+            color: "white",
+            mx: 1,
+          }}
+        />
+      </div>
+      <TableContainer component={Paper} sx={{ mt: 1 }}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Key</StyledTableCell>
+              <StyledTableCell>Value</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {paramsTableData.map((List, index) => {
+              return <List key={index} />;
+            })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   );
 }
