@@ -9,7 +9,6 @@ import CodeSnippet from "../component/CodeSnippet/CodeSnippet";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  // backgroundColor: "black",
   ...theme.typography.body2,
   padding: theme.spacing(1),
   // textAlign: "center",
@@ -26,7 +25,6 @@ export default function Main() {
           flexGrow: 1,
           height: "100%",
           width: "100%",
-          background: "inherit",
         }}
       >
         <Grid container spacing={1} sx={{ height: "100%", width: "100%" }}>

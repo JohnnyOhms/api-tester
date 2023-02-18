@@ -12,11 +12,19 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { ColorModeContext } from "../../App";
+import { useTheme } from "@emotion/react";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { Palette } from "../../utils/types";
+import { connect } from "react-redux";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function ResponsiveAppBar() {
+function Navbar({ mode }: any) {
+  const colorMode = React.useContext(ColorModeContext);
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -130,6 +138,14 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
+            <IconButton
+              sx={{ ml: 1 }}
+              onClick={colorMode.toggleColorMode}
+              color="inherit"
+            >
+              <p style={{ fontSize: "14px" }}>{`${mode} mode`}</p>
+              {mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -163,4 +179,17 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
+
+const mapStateToProps = (state: any) => {
+  return {
+    mode: state.mainState.mode,
+  };
+};
+
+// const mapDispatchToProps = (dispatch: any) => {
+//   return {
+//     setDarkMode: () => dispatch(setDarkMode()),
+//   };
+// };
+
+export default connect(mapStateToProps)(Navbar);

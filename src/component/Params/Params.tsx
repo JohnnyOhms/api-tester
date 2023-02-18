@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -11,6 +12,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { green, red } from "@mui/material/colors";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { paramsTableData } from "../../utils/data";
+import ParamsData from "./ParamsData";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -33,6 +35,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function Params() {
+  const [paramsData, setParamsData] = useState();
+  // useEffect( () => {
+  //   setParamsData(paramTableData)
+  // },[])
+
+  const handleAddClick = () => {
+    paramsTableData.push(ParamsData);
+    console.log("click");
+  };
   return (
     <>
       <div
@@ -46,15 +57,16 @@ export default function Params() {
         <AddIcon
           sx={{
             border: `1px solid ${green[300]}`,
-            background: green[300],
+            background: green[500],
             color: "white",
             mx: 1,
           }}
+          onClick={handleAddClick}
         />
         <DeleteIcon
           sx={{
             border: `1px solid ${red[300]}`,
-            background: red[300],
+            background: red[500],
             color: "white",
             mx: 1,
           }}

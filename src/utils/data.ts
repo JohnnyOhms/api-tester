@@ -47,4 +47,4 @@ export const codeSnippetLanguage = [
   },
 ];
 
-export let paramsTableData: (() => JSX.Element)[] = [ParamsData, ParamsData];
+export let paramsTableData: (() => JSX.Element)[] = [ParamsData];
